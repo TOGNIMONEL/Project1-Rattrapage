@@ -1,5 +1,4 @@
 <template>
-  <NavbarView />
   <div class="p-4">
     <h2 class="text-xl font-semibold mb-4">Ajouter ou Modifier une tâche</h2>
     <form @submit.prevent="submitTask" class="bg-white p-6 rounded-lg shadow-md">
@@ -51,25 +50,27 @@
           <option value="high">Urgent</option>
         </select>
       </div>
-      <button
-        type="submit"
-        class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
-      >
-        Ajouter Tâche
-      </button>
-      <RouterLink
-        to="/home/"
-        type="submit"
-        class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
-        >Annuler</RouterLink
-      >
 
+      <div class="flex justify-between">
+        <RouterLink
+          to="/home/"
+          type="submit"
+          class="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
+          >Annuler</RouterLink
+        >
+        <button
+          type="submit"
+          class="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
+        >
+          Ajouter Tâche
+        </button>
+      </div>
     </form>
   </div>
 </template>
 
 <script>
-import NavbarView from "../components/NavbarView.vue";
+
 import { useTaskStore } from "../stores/taskStore.js";
 
 export default {

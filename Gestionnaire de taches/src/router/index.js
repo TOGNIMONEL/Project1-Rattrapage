@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue';
 import SignView from '../views/SignView.vue';
 import RegisterView from '../views/RegisterView.vue';
-import TaskForm from '../views/TaskForm.vue'
+import TaskForm from '../views/TaskForm.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -35,6 +35,7 @@ const router = createRouter({
       name: 'Tasks',
       component: TaskForm
     },
+   
   ]
 })
 
