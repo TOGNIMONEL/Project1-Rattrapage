@@ -7,8 +7,6 @@ import TaskList from '../components/TaskList.vue';
 
 <template>
   <NavbarView />
-
-  <TaskForm />
   <TaskList />
   <FooterView />
 </template>

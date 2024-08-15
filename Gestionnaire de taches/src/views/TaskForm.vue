@@ -1,77 +1,118 @@
 <template>
-  <div class="p-4">
-    <h2 class="text-xl font-semibold mb-4">Ajouter ou Modifier une tâche</h2>
-    <form @submit.prevent="submitTask" class="bg-white p-6 rounded-lg shadow-md">
-      <div class="mb-4">
-        <label for="title" class="block text-gray-700">Titre</label>
-        <input
-          v-model="task.title"
-          id="title"
-          type="text"
-          class="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-          required
-        />
+  <!-- component -->
+  <!--
+  UI Design Prototype
+  Link : https://dribbble.com/shots/10452538-React-UI-Components
+-->
+  <div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+    <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+      <div class="relative px-4 py-10 bg-white mx-8 md:mx-0 shadow rounded-3xl sm:p-10">
+        <div class="max-w-md mx-auto">
+          <div class="flex items-center space-x-5">
+            <div
+              class="h-14 w-14 bg-yellow-200 rounded-full flex flex-shrink-0 justify-center items-center text-yellow-500 text-2xl font-mono"
+            >
+              i
+            </div>
+            <div class="block pl-2 font-semibold text-xl self-start text-gray-700">
+              <h2 class="leading-relaxed">Créer une tache</h2>
+              <p class="text-sm text-gray-500 font-normal leading-relaxed">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+              </p>
+            </div>
+          </div>
+          <form @submit.prevent="submitTask" class="bg-white p-6 rounded-lg shadow-md">
+            <div class="divide-y divide-gray-200">
+              <div
+                class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7"
+              >
+                <div class="flex flex-col">
+                  <label class="leading-loose">Title</label>
+                  <input
+                    v-model="task.title"
+                    type="text"
+                    class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+                    placeholder="Event title"
+                  />
+                </div>
+                <div class="mb-4">
+                  <label for="description" class="block text-gray-700">Description</label>
+                  <textarea
+                    v-model="task.description"
+                    id="description"
+                    class="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                  ></textarea>
+                </div>
+                <div class="mb-4">
+                  <label for="startDate" class="block text-gray-700">Date de début</label>
+                  <input
+                    v-model="task.startDate"
+                    id="startDate"
+                    type="date"
+                    class="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                  />
+                </div>
+                <div class="mb-4">
+                  <label for="dueDate" class="block text-gray-700">Date de fin</label>
+                  <input
+                    v-model="task.dueDate"
+                    id="dueDate"
+                    type="date"
+                    class="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                  />
+                </div>
+                <div class="mb-4">
+                  <label for="priority" class="block text-gray-700">Priorité</label>
+                  <select
+                    v-model="task.priority"
+                    id="priority"
+                    class="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                  >
+                    <option value="low">Faible</option>
+                    <option value="medium">Important</option>
+                    <option value="high">Urgent</option>
+                  </select>
+                </div>
+              </div>
+              <div class="pt-4 flex items-center space-x-4">
+                <RouterLink
+                  to="/home/"
+                  type="submit"
+                  class="flex justify-center items-center w-full text-gray-900 px-4 py-3 rounded-md focus:outline-none"
+                >
+                  <svg
+                    class="w-6 h-6 mr-3"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    ></path>
+                  </svg>
+                  Cancel
+                </RouterLink>
+                <button
+                  type="submit"
+                  class="bg-blue-500 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none"
+                >
+                  Create
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
-      <div class="mb-4">
-        <label for="description" class="block text-gray-700">Description</label>
-        <textarea
-          v-model="task.description"
-          id="description"
-          class="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-        ></textarea>
-      </div>
-      <div class="mb-4">
-        <label for="startDate" class="block text-gray-700">Date de début</label>
-        <input
-          v-model="task.startDate"
-          id="startDate"
-          type="date"
-          class="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-        />
-      </div>
-      <div class="mb-4">
-        <label for="dueDate" class="block text-gray-700">Date de fin</label>
-        <input
-          v-model="task.dueDate"
-          id="dueDate"
-          type="date"
-          class="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-        />
-      </div>
-      <div class="mb-4">
-        <label for="priority" class="block text-gray-700">Priorité</label>
-        <select
-          v-model="task.priority"
-          id="priority"
-          class="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-        >
-          <option value="low">Faible</option>
-          <option value="medium">Important</option>
-          <option value="high">Urgent</option>
-        </select>
-      </div>
-
-      <div class="flex justify-between">
-        <RouterLink
-          to="/home/"
-          type="submit"
-          class="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
-          >Annuler</RouterLink
-        >
-        <button
-          type="submit"
-          class="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
-        >
-          Ajouter Tâche
-        </button>
-      </div>
-    </form>
+    </div>
   </div>
 </template>
 
 <script>
-
-import { useTaskStore } from "../stores/taskStore.js";
+import { useTaskStore } from "../stores/taskStore";
 
 export default {
   data() {
@@ -91,7 +132,7 @@ export default {
       const newTask = { ...this.task, id: Date.now() };
       taskStore.addTask(newTask);
       this.resetForm();
-      this.$router.push("/home");
+      this.$router.push("/");
     },
     resetForm() {
       this.task = {

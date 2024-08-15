@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { useTaskStore } from '../stores/taskStore.js';
+import { useTaskStore } from '../stores/taskStore';
 
 export default {
   computed: {

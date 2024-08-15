@@ -8,9 +8,10 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/home',
+      path: '/',
       name: 'home',
-      component: HomeView,  meta: { requiresAuth: true }
+      component: HomeView,  
+      meta: { requiresAuth: true },
     },
     {
       path: '/about',
@@ -31,12 +32,14 @@ const router = createRouter({
       component: RegisterView
     },
     {
-      path: '/user/Edit',
+      path: '/:user/Edit',
       name: 'Tasks',
-      component: TaskForm
+      component: TaskForm,
+      meta: { requiresAuth: true },
     },
    
   ]
 })
+
 
 export default router
